@@ -36,9 +36,6 @@
     <ClInclude Include="ListOfBooks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Book.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Laptop.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -55,6 +52,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ListOfLaptops.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Book.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

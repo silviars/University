@@ -87,7 +87,7 @@ const int ListOfLaptops::getMaxSize() const
 void ListOfLaptops::addLaptop(const Laptop & newLaptop)
 {
 	for (int i = 0; i < this->Size; i++) {
-		if (newLaptop.getModel() == Laptops[i].getModel()) {
+		if (strcmp(newLaptop.getModel(), Laptops[i].getModel()) == 0) {
 			cout << "This Laptop is already in the ListOfLaptops" << endl;
 		}
 	}
@@ -101,7 +101,7 @@ void ListOfLaptops::addLaptop(const Laptop & newLaptop)
 void ListOfLaptops::removeLaptop(const Laptop & Laptop)
 {
 	for (int i = 0; i < this->Size; i++) {
-		if (Laptop.getModel() == Laptops[i].getModel()) {
+		if (strcmp(Laptop.getModel(), Laptops[i].getModel()) == 0) {
 			removeLaptopWithIndex(i);
 			return;
 		}

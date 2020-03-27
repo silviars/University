@@ -87,7 +87,7 @@ const int ListOfVideoGames::getMaxSize() const
 void ListOfVideoGames::addVideoGame(const VideoGame & newVideoGame)
 {
 	for (int i = 0; i < this->Size; i++) {
-		if (newVideoGame.getName() == VideoGames[i].getName()) {
+		if (strcmp(newVideoGame.getName(), VideoGames[i].getName()) == 0) {
 			cout << "This VideoGame is already in the ListOfVideoGames" << endl;
 		}
 	}

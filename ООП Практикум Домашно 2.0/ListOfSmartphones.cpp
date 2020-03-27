@@ -1,5 +1,6 @@
 #include "ListOfSmartPhones.h"
 #include<iostream>
+#include<cstring>
 
 using namespace std;
 
@@ -87,7 +88,7 @@ const int ListOfSmartPhones::getMaxSize() const
 void ListOfSmartPhones::addSmartPhone(const SmartPhone & newSmartPhone)
 {
 	for (int i = 0; i < this->Size; i++) {
-		if (newSmartPhone.getModel() == SmartPhones[i].getModel()) {
+		if (strcmp(newSmartPhone.getModel(),SmartPhones[i].getModel())==0) {
 			cout << "This SmartPhone is already in the ListOfSmartPhones" << endl;
 		}
 	}
@@ -101,7 +102,7 @@ void ListOfSmartPhones::addSmartPhone(const SmartPhone & newSmartPhone)
 void ListOfSmartPhones::removeSmartPhone(const SmartPhone & SmartPhone)
 {
 	for (int i = 0; i < this->Size; i++) {
-		if (SmartPhone.getName() == SmartPhones[i].getName()) {
+		if (strcmp(SmartPhone.getModel(), SmartPhones[i].getModel()) == 0) {
 			removeSmartPhoneWithIndex(i);
 			return;
 		}

@@ -1,5 +1,6 @@
 #include "ListOfBooks.h"
 #include<iostream>
+#include<cstring>
 
 using namespace std;
 
@@ -87,7 +88,7 @@ const int ListOfBooks::getMaxSize() const
 void ListOfBooks::addBook(const Book & newBook)
 {
 	for (int i = 0; i < this->Size; i++) {
-		if (newBook.getTitle() == Books[i].getTitle()) {
+		if (strcmp(newBook.getTitle(),Books[i].getTitle())==0) {
 			cout << "This Book is already in the ListOfBooks" << endl;
 		}
 	}
@@ -101,7 +102,7 @@ void ListOfBooks::addBook(const Book & newBook)
 void ListOfBooks::removeBook(const Book & Book)
 {
 	for (int i = 0; i < this->Size; i++) {
-		if (Book.getTitle() == Books[i].getTitle()) {
+		if (strcmp(Book.getTitle(), Books[i].getTitle()) == 0) {
 			removeBookWithIndex(i);
 			return;
 		}
