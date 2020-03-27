@@ -17,6 +17,7 @@ int main()
 	}
 	system("pause");
 	library.~ListOfBooks();
+	cout << "No more testing" << endl;
 	/*Product acer(2015, 20, 15);
 	Product lenovo(2018, 1000, 10);
 	Product asus(2017, 150, 20);
