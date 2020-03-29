@@ -132,6 +132,15 @@ void ListOfLaptops::printAllLaptops() const
 	}
 }
 
+const double ListOfLaptops::calculate() const
+{
+	double bill = 0;
+	for (int i = 0; i < this->Size; i++) {
+		bill += this->Laptops[i].getPrice();
+	}
+	return bill;
+}
+
 ListOfLaptops::~ListOfLaptops()
 {
 	delete[] Laptops;

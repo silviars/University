@@ -133,6 +133,15 @@ void ListOfSmartPhones::printAllSmartPhones() const
 	}
 }
 
+const double ListOfSmartPhones::calculate() const
+{
+	double bill = 0;
+	for (int i = 0; i < this->Size; i++) {
+		bill += this->SmartPhones[i].getPrice();
+	}
+	return bill;
+}
+
 ListOfSmartPhones::~ListOfSmartPhones()
 {
 	delete[] SmartPhones;

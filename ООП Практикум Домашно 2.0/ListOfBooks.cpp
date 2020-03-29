@@ -133,6 +133,15 @@ void ListOfBooks::printAllBooks() const
 	}
 }
 
+const double ListOfBooks::calculate() const
+{
+	double bill = 0;
+	for (int i = 0; i < this->Size; i++) {
+		bill += this->Books[i].getPrice();
+	}
+	return bill;
+}
+
 ListOfBooks::~ListOfBooks()
 {
 	delete[] Books;

@@ -25,6 +25,7 @@ public:
 	void removeProduct(const Product& product);
 	void removeProductWithIndex(const int index);
 	void printAllProducts() const;
+	const double calculate() const;
 
 	~Storage();
 };

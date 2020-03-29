@@ -24,6 +24,7 @@ public:
 	void removeBook(const Book& Book);
 	void removeBookWithIndex(const int index);
 	void printAllBooks() const;
+	const double calculate() const;
 
 	~ListOfBooks();
 };

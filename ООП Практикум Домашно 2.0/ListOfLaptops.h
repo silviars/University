@@ -24,6 +24,7 @@ public:
 	void removeLaptop(const Laptop& Laptop);
 	void removeLaptopWithIndex(const int index);
 	void printAllLaptops() const;
+	const double calculate() const;
 
 	~ListOfLaptops();
 };

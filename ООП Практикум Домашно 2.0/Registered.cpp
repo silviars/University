@@ -183,9 +183,9 @@ void Registered::logOut()
 	loggedIn = false;
 }
 
-void Registered::addProductToShoppingCart(const Product & newProduct, const int amount)
+void Registered::addProductToShoppingCart(const Product & newProduct)
 {
-	this->shoppingCart.addProduct(newProduct, amount);
+	this->shoppingCart.addProduct(newProduct);
 }
 
 void Registered::removeProductFromShoppingCart(const Product & product)
@@ -195,8 +195,67 @@ void Registered::removeProductFromShoppingCart(const Product & product)
 
 void Registered::removeProductFromShoppingCartWithIndex(const int index)
 {
-	if (index < 0 || index >= this->shoppingCart.getSize()) return;
 	this->shoppingCart.removeProductWithIndex(index);
+}
+
+void Registered::addBookToShoppingCart(const Book & newBook)
+{
+	this->shoppingCart.addBook(newBook);
+}
+
+void Registered::removeBookFromShoppingCart(const Book & Book)
+{
+	this->shoppingCart.removeBook(Book);
+}
+
+void Registered::removeBookFromShoppingCartWithIndex(const int index)
+{
+	this->shoppingCart.removeBookWithIndex(index);
+}
+
+void Registered::addLaptopToShoppingCart(const Laptop & newLaptop)
+{
+	this->shoppingCart.addLaptop(newLaptop);
+}
+
+void Registered::removeLaptopFromShoppingCart(const Laptop & Laptop)
+{
+	this->shoppingCart.removeLaptop(Laptop);
+}
+
+void Registered::removeLaptopFromShoppingCartWithIndex(const int index)
+{
+	this->shoppingCart.removeLaptopWithIndex(index);
+}
+
+void Registered::addSmartPhoneToShoppingCart(const SmartPhone & newSmartPhone)
+{
+	this->shoppingCart.addSmartPhone(newSmartPhone);
+}
+
+void Registered::removeSmartPhoneFromShoppingCart(const SmartPhone & SmartPhone)
+{
+	this->shoppingCart.removeSmartPhone(SmartPhone);
+}
+
+void Registered::removeSmartPhoneFromShoppingCartWithIndex(const int index)
+{
+	this->shoppingCart.removeSmartPhoneWithIndex(index);
+}
+
+void Registered::addVideoGameToShoppingCart(const VideoGame & newVideoGame)
+{
+	this->shoppingCart.addVideoGame(newVideoGame);
+}
+
+void Registered::removeVideoGameFromShoppingCart(const VideoGame & VideoGame)
+{
+	this->shoppingCart.removeVideoGame(VideoGame);
+}
+
+void Registered::removeVideoGameFromShoppingCartWithIndex(const int index)
+{
+	this->shoppingCart.removeVideoGameWithIndex(index);
 }
 
 double Registered::pay()

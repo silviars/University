@@ -33,9 +33,25 @@ public:
 	void changePassword();
 	void logIn();
 	void logOut();
-	void addProductToShoppingCart(const Product& newProduct, const int amount);
+	void addProductToShoppingCart(const Product& newProduct);
 	void removeProductFromShoppingCart(const Product& product);
 	void removeProductFromShoppingCartWithIndex(const int index);
+
+	void addBookToShoppingCart(const Book& newBook);
+	void removeBookFromShoppingCart(const Book& Book);
+	void removeBookFromShoppingCartWithIndex(const int index);
+
+	void addLaptopToShoppingCart(const Laptop& newLaptop);
+	void removeLaptopFromShoppingCart(const Laptop& Laptop);
+	void removeLaptopFromShoppingCartWithIndex(const int index);
+
+	void addSmartPhoneToShoppingCart(const SmartPhone& newSmartPhone);
+	void removeSmartPhoneFromShoppingCart(const SmartPhone& SmartPhone);
+	void removeSmartPhoneFromShoppingCartWithIndex(const int index);
+
+	void addVideoGameToShoppingCart(const VideoGame& newVideoGame);
+	void removeVideoGameFromShoppingCart(const VideoGame& VideoGame);
+	void removeVideoGameFromShoppingCartWithIndex(const int index);
 	double pay();
 	void print() const;
 

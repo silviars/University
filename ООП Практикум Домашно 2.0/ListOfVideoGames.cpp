@@ -132,6 +132,15 @@ void ListOfVideoGames::printAllVideoGames() const
 	}
 }
 
+const double ListOfVideoGames::calculate() const
+{
+	double bill = 0;
+	for (int i = 0; i < this->Size; i++) {
+		bill += this->VideoGames[i].getPrice();
+	}
+	return bill;
+}
+
 ListOfVideoGames::~ListOfVideoGames()
 {
 	delete[] VideoGames;

@@ -24,6 +24,7 @@ public:
 	void removeSmartPhone(const SmartPhone& SmartPhone);
 	void removeSmartPhoneWithIndex(const int index);
 	void printAllSmartPhones() const;
+	const double calculate() const;
 
 	~ListOfSmartPhones();
 };

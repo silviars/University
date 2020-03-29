@@ -24,6 +24,7 @@ public:
 	void removeVideoGame(const VideoGame& VideoGame);
 	void removeVideoGameWithIndex(const int index);
 	void printAllVideoGames() const;
+	const double calculate() const;
 
 	~ListOfVideoGames();
 };

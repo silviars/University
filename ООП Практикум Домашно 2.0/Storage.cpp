@@ -131,6 +131,15 @@ void Storage::printAllProducts() const
 	}
 }
 
+const double Storage::calculate() const
+{
+	double bill = 0;
+	for (int i = 0; i < this->Size; i++) {
+		bill += this->Products[i].getPrice();
+	}
+	return bill;
+}
+
 Storage::~Storage()
 {
 	delete[] Products;

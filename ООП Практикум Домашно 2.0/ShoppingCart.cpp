@@ -5,166 +5,110 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-void ShoppingCart::setSize(const int Size)
+ShoppingCart::ShoppingCart() :Products(), Books(), Laptops(), SmartPhones(), VideoGames()
 {
-	this->Size = Size;
+	
 }
 
-void ShoppingCart::setMaxSize(const int maxSize)
+ShoppingCart::ShoppingCart(const ShoppingCart & copy) : Products(copy.Products), Books(copy.Books), Laptops(copy.Laptops), SmartPhones(copy.SmartPhones), VideoGames(copy.VideoGames)
 {
-	this->MaxSize = maxSize;
-}
-
-void ShoppingCart::resize()
-{
-	cout << "Resize called" << endl;
-	this->MaxSize *= 2;
-	Product* temp = new Product[this->MaxSize];
-	int* tempA = new int[this->MaxSize];
-	for (int i = 0; i < this->Size; i++) {
-		temp[i] = this->listOfProducts[i];
-		tempA[i] = this->amountOfProduct[i];
-	}
-	delete[] listOfProducts;
-	delete[] amountOfProduct;
-	listOfProducts = temp;
-	amountOfProduct = tempA;
-}
-
-ShoppingCart::ShoppingCart()
-{
-	setSize(0);
-	setMaxSize(1);
-	this->listOfProducts = new Product[this->MaxSize];
-	this->amountOfProduct = new int[this->MaxSize];
-}
-
-ShoppingCart::ShoppingCart(const int maxSize)
-{
-	setSize(0);
-	setMaxSize(maxSize);
-	this->listOfProducts = new Product[this->MaxSize];
-	this->amountOfProduct = new int[this->MaxSize];
-}
-
-ShoppingCart::ShoppingCart(const ShoppingCart & copy)
-{
-	setSize(copy.Size);
-	setMaxSize(copy.MaxSize);
-	this->listOfProducts = new Product[this->MaxSize];
-	this->amountOfProduct = new int[this->MaxSize];
-	for (int i = 0; i < this->Size; i++) {
-		this->listOfProducts[i] = copy.listOfProducts[i];
-		this->amountOfProduct[i] = copy.amountOfProduct[i];
-	}
+	
 }
 
 const ShoppingCart & ShoppingCart::operator=(const ShoppingCart & copy)
 {
 	if (this != &copy) {
-		setSize(copy.Size);
-		setMaxSize(copy.MaxSize);
-		delete[] listOfProducts;
-		delete[] amountOfProduct;
-		listOfProducts = nullptr;
-		amountOfProduct = nullptr;
-		this->listOfProducts = new Product[this->MaxSize];
-		this->amountOfProduct = new int[this->MaxSize];
-		for (int i = 0; i < this->Size; i++) {
-			this->listOfProducts[i] = copy.listOfProducts[i];
-			this->amountOfProduct[i] = copy.amountOfProduct[i];
-		}
+		this->Products = copy.Products;
 	}
 	return *this;
 }
 
-void ShoppingCart::addProduct(const Product & newProduct, int amount)
+void ShoppingCart::addProduct(const Product & newProduct)
 {
-	if (amount == 0 || newProduct.getAmount() < amount) {
-		cout << "Wrong input for amount! Can't add this product!" << endl;
-		return;
-	}
-	if (this->Size == this->MaxSize) {
-		resize();
-	}
-
-	listOfProducts[this->Size] = newProduct;
-	amountOfProduct[this->Size] = amount;
-	this->Size++;
+	Products.addProduct(newProduct);
 }
 
 void ShoppingCart::removeProduct(const Product & product)
 {
-	for (int i = 0; i < this->Size; i++) {
-		if (product.getID() == listOfProducts[i].getID()) {
-			removeProductWithIndex(i);
-			return;
-		}
-	}
+	Products.removeProduct(product);
 }
 
 void ShoppingCart::removeProductWithIndex(const int index)
 {
-	if (index == this->Size) {
-		this->Size--;
-		return;
-	}
-	for (int i = index; i < this->Size - 1; i++) {
-		listOfProducts[i] = listOfProducts[i + 1];
-		amountOfProduct[i] = amountOfProduct[i + 1];
-	}
-	this->Size--;
+	Products.removeProductWithIndex(index);
+}
+
+void ShoppingCart::addBook(const Book & newBook)
+{
+	Books.addBook(newBook);
+}
+
+void ShoppingCart::removeBook(const Book & Book)
+{
+	Books.removeBook(Book);
+}
+
+void ShoppingCart::removeBookWithIndex(const int index)
+{
+	Books.removeBookWithIndex(index);
+}
+
+void ShoppingCart::addLaptop(const Laptop & newLaptop)
+{
+	Laptops.addLaptop(newLaptop);
+}
+
+void ShoppingCart::removeLaptop(const Laptop & Laptop)
+{
+	Laptops.removeLaptop(Laptop);
+}
+
+void ShoppingCart::removeLaptopWithIndex(const int index)
+{
+	Laptops.removeLaptopWithIndex(index);
+}
+
+void ShoppingCart::addSmartPhone(const SmartPhone & newSmartPhone)
+{
+	SmartPhones.addSmartPhone(newSmartPhone);
+}
+
+void ShoppingCart::removeSmartPhone(const SmartPhone & SmartPhone)
+{
+	SmartPhones.removeSmartPhone(SmartPhone);
+}
+
+void ShoppingCart::removeSmartPhoneWithIndex(const int index)
+{
+	SmartPhones.removeSmartPhoneWithIndex(index);
+}
+
+void ShoppingCart::addVideoGame(const VideoGame & newVideoGame)
+{
+	VideoGames.addVideoGame(newVideoGame);
+}
+
+void ShoppingCart::removeVideoGame(const VideoGame & VideoGame)
+{
+	VideoGames.removeVideoGame(VideoGame);
+}
+
+void ShoppingCart::removeVideoGameWithIndex(const int index)
+{
+	VideoGames.removeVideoGameWithIndex(index);
 }
 
 double ShoppingCart::emptyTheCart(){
-	double bill = 0;
-	for (int i = 0; i < Size; i++) {
-		bill += (listOfProducts[i].getPrice() * amountOfProduct[i]);
-	}
-	this->~ShoppingCart();
-	this->Size = 0;
-	this->MaxSize = 10;
-	listOfProducts = new Product[MaxSize];
-	amountOfProduct = new int[MaxSize];
+	double bill = Products.calculate() + Books.calculate() + Laptops.calculate() + SmartPhones.calculate() + VideoGames.calculate();
+	Products.~Storage();
+	Books.~ListOfBooks();
+	Laptops.~ListOfLaptops();
+	SmartPhones.~ListOfSmartPhones();
+	VideoGames.~ListOfVideoGames();
 	return bill;
 }
 
 void ShoppingCart::printTheCart() const
 {
-	if (this->Size == 0) {
-		cout << "The cart is empty!" << endl;
-		return;
-	}
-	for (int i = 0; i < this->Size; i++) {
-		listOfProducts[i].print();
-		cout << "Amount: " << this->amountOfProduct[i] << endl;
-	}
-	/*char action;
-	for (int i = 0; i < this->Size; i++) {
-		listOfProducts[i].print();
-		cout << "Amount: " << this->amountOfProduct[i] << endl;
-		cout << "Type P for previous product or N for Next: ";
-		cin >> action;
-		if (action == 'p' || action == 'P') i = i - 2 < 0 ? 0 : i - 2;
-		else if (action != 'n' && action != 'N') break;
-		system("CLS");
-	}*/
-}
-
-const int ShoppingCart::getSize() const
-{
-	return this->Size;
-}
-
-const int ShoppingCart::getMaxSize() const
-{
-	return this->MaxSize;
-}
-
-ShoppingCart::~ShoppingCart()
-{
-	delete[] listOfProducts;
-	delete[] amountOfProduct;
-	listOfProducts = nullptr;
-	amountOfProduct = nullptr;
+	Products.printAllProducts();
 }
