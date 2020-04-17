@@ -36,7 +36,7 @@ VALUES('2020-03-06','2020-03-08',315,(Select firstname + lastname from client wh
 INSERT INTO RESERVATIONS(registerDate,checkOutDate,roomNumber,clientsName,priceForNight,clientsNumber,packet)
 VALUES('2020-01-21','2020-01-23',120,(Select firstname + lastname from client where clientsNumber like 2 ) ,110,2,'None')
 
-select*from RESERVATIONS
+select * from RESERVATIONS
 
 UPDATE RESERVATIONS SET registerDate = '2019-07-28', checkOutDate = '2019-07-31' WHERE reservationNumber = 23
 UPDATE RESERVATIONS SET registerDate = '2019-07-10', checkOutDate = '2019-07-15' WHERE reservationNumber = 24
@@ -50,4 +50,4 @@ UPDATE RESERVATIONS SET registerDate = '2019-07-02', checkOutDate = '2019-07-06'
 UPDATE RESERVATIONS SET registerDate = '2019-07-12', checkOutDate = '2019-07-19' WHERE reservationNumber = 32
 UPDATE RESERVATIONS SET registerDate = '2019-07-29', checkOutDate = '2019-08-02' WHERE reservationNumber = 33
 UPDATE RESERVATIONS SET registerDate = '2019-06-29', checkOutDate = '2019-07-02' WHERE reservationNumber = 34
-
+UPDATE RESERVATIONS SET priceForNight = 90 WHERE roomNumber = 120

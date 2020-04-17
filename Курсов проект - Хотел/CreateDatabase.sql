@@ -1,8 +1,12 @@
+CREATE DATABASE Hotel
+
 USE Hotel
+
+
 CREATE TABLE ROOM(
 	roomNumber INT,
 	floor INT,
-	status CHAR(1),
+	status CHAR(1) DEFAULT 'F',
 	roomCapacity INT,
 	roomType VARCHAR(10)
 );
@@ -25,6 +29,7 @@ CREATE TABLE CLIENT(
 	personalID CHAR(10),
 	IDCardNumber CHAR(9),
 	address VARCHAR(100),
+	gender CHAR(1),
 	clientsNumber INT IDENTITY(1,1)
 );
 
@@ -36,6 +41,7 @@ CREATE TABLE EMPLOYEES(
 	type VARCHAR(15),
 	insuranceNumber VARCHAR(20),
 	workingHours INT,
+	gender CHAR(1),
 	employeeID INT IDENTITY(1,1),
 	salary DECIMAL(10,2)
 );
